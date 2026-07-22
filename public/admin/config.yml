@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: LEONGO037/FundacionNuestraEsperanza
+  branch: main # Cambiar si se usa otra rama
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "programas"
+    label: "Programas"
+    folder: "src/content/programas"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Fecha", name: "date", widget: "datetime"}
+      - {label: "Imagen Destacada", name: "thumbnail", widget: "image", required: false}
+      - {label: "Descripción Corta", name: "description", widget: "text"}
+      - {label: "Cuerpo", name: "body", widget: "markdown"}
+
+  - name: "noticias"
+    label: "Noticias"
+    folder: "src/content/noticias"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Fecha", name: "date", widget: "datetime"}
+      - {label: "Autor", name: "author", widget: "string", required: false}
+      - {label: "Imagen Destacada", name: "thumbnail", widget: "image", required: false}
+      - {label: "Cuerpo", name: "body", widget: "markdown"}
+
+  - name: "testimonios"
+    label: "Testimonios"
+    folder: "src/content/testimonios"
+    create: true
+    fields:
+      - {label: "Nombre de la Persona", name: "title", widget: "string"}
+      - {label: "Rol o Relación", name: "role", widget: "string", required: false}
+      - {label: "Testimonio", name: "body", widget: "markdown"}

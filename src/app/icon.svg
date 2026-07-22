@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <g id="hand">
+      <!-- Palma de la mano -->
+      <path d="M 40,46 Q 50,32 60,46 L 56,58 Q 50,62 44,58 Z" />
+      <!-- Dedos -->
+      <path d="M 44,50 L 22,35" stroke-width="6" stroke-linecap="round" /> 
+      <path d="M 45,42 L 32,15" stroke-width="6" stroke-linecap="round" /> 
+      <path d="M 50,38 L 48,8" stroke-width="6" stroke-linecap="round" /> 
+      <path d="M 55,42 L 64,15" stroke-width="6" stroke-linecap="round" /> 
+      <path d="M 56,50 L 78,35" stroke-width="6" stroke-linecap="round" /> 
+    </g>
+  </defs>
+
+  <!-- Centro de la estrella de manos -->
+  <use href="#hand" fill="#ff4874" stroke="#ff4874" transform="rotate(0, 50, 50)" />
+  <use href="#hand" fill="#00c2cb" stroke="#00c2cb" transform="rotate(72, 50, 50)" />
+  <use href="#hand" fill="#8dc63f" stroke="#8dc63f" transform="rotate(144, 50, 50)" />
+  <use href="#hand" fill="#00a2e8" stroke="#00a2e8" transform="rotate(216, 50, 50)" />
+  <use href="#hand" fill="#ffc20e" stroke="#ffc20e" transform="rotate(288, 50, 50)" />
+</svg>

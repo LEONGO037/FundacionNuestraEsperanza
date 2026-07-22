@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8f7f2; /* fundacion-cream */
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Paleta Corporativa - Fundación Nuestra Esperanza */
+  --color-fundacion-blue: #00246E;
+  --color-fundacion-pink: #ff4874;
+  --color-fundacion-cyan: #00c2cb;
+  --color-fundacion-sky: #bce5ff;
+  --color-fundacion-cream: #f8f7f2;
+  --color-fundacion-pale-pink: #fce8ed;
+}
+
+/* Modo oscuro deshabilitado para mantener el diseño institucional */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden; /* Fix global responsive: previene scroll horizontal en móviles */
+}
+
+/* Solución global para Next.js Images: Mantener el aspect-ratio siempre */
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}

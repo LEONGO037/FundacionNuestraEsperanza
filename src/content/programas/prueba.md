@@ -2,6 +2,7 @@
 title: "Albergue Casa Esperanza"
 date: "2026-07-28T10:00:00.000Z"
 description: "Brindamos un hogar temporal para niños y sus familias en la zona de Miraflores durante el tratamiento oncológico."
+thumbnail: "/images/uploads/prueba.jpg"
 ---
 El programa de **Albergue Casa Esperanza** es uno de nuestros pilares fundamentales. Está ubicado en la zona de Miraflores y recibe a familias provenientes de distintos departamentos de Bolivia.
 

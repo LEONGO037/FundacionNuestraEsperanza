@@ -1,5 +1,6 @@
 import { getItemData, getAllItems } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
+import Image from 'next/image'; 
 
 export async function generateStaticParams() {
   const programas = getAllItems('programas');
@@ -39,6 +40,18 @@ export default async function ProgramaDetalle({ params }) {
           <p className="text-xl text-gray-600 mt-4">{programa.description}</p>
         )}
       </header>
+
+      {programa.thumbnail && (
+        <div className="relative w-full h-64 md:h-[400px] mb-12">
+          <Image 
+            src={programa.thumbnail} 
+            alt={`Imagen de ${programa.title}`}
+            fill
+            priority 
+            className="object-cover rounded-2xl shadow-lg"
+          />
+        </div>
+      )}
 
       <div 
         className="prose prose-blue lg:prose-lg mx-auto"

@@ -54,6 +54,7 @@ export default async function NoticiaDetalle({ params }) {
             src={noticia.thumbnail} 
             alt={`Imagen destacada de ${noticia.title}`}
             fill
+            sizes="(max-width: 768px) 100vw, 896px"
             priority /* <-- Esto garantiza el cumplimiento de tu Fase 5 */
             className="object-cover rounded-2xl shadow-lg"
           />

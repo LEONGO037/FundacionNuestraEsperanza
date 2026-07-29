@@ -47,6 +47,7 @@ export default async function ProgramaDetalle({ params }) {
             src={programa.thumbnail} 
             alt={`Imagen de ${programa.title}`}
             fill
+            sizes="(max-width: 768px) 100vw, 896px"
             priority 
             className="object-cover rounded-2xl shadow-lg"
           />

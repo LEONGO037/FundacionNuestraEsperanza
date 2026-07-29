@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Programas() {
   return (
     <div className="container mx-auto p-8">
@@ -7,7 +9,7 @@ export default function Programas() {
         <div className="p-4 border rounded-lg shadow">
           <h2 className="font-bold text-xl">Programa Ejemplo</h2>
           <p className="mt-2 text-gray-600">Descripción del programa...</p>
-          <a href="/programs/programa-ejemplo" className="text-blue-500 hover:underline mt-4 inline-block">Ver más</a>
+          <Link href="/programas/programa-ejemplo" className="text-fundacion-blue hover:underline mt-4 inline-block">Ver más</Link>
         </div>
       </div>
     </div>

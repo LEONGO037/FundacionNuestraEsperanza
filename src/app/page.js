@@ -17,7 +17,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Placeholder para testimonios */}
           <div className="p-4 bg-gray-50 rounded-lg shadow">
-            <p className="italic">"Un testimonio de ejemplo de una persona ayudada."</p>
+            <p className="italic">&ldquo;Un testimonio de ejemplo de una persona ayudada.&rdquo;</p>
             <p className="font-bold mt-2">- Persona de Ejemplo</p>
           </div>
         </div>

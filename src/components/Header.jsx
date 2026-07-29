@@ -27,16 +27,16 @@ export default function Header() {
 
         {/* Navegación Principal Desktop */}
         <nav className="hidden md:flex space-x-6 font-medium">
-          <Link href="/about-us" className="hover:text-fundacion-sky transition-colors">Sobre Nosotros</Link>
-          <Link href="/programs" className="hover:text-fundacion-sky transition-colors">Programas</Link>
-          <Link href="/news" className="hover:text-fundacion-sky transition-colors">Noticias</Link>
-          <Link href="/contact" className="hover:text-fundacion-sky transition-colors">Contacto</Link>
+          <Link href="/sobre-nosotros" className="hover:text-fundacion-sky transition-colors">Sobre Nosotros</Link>
+          <Link href="/programas" className="hover:text-fundacion-sky transition-colors">Programas</Link>
+          <Link href="/noticias" className="hover:text-fundacion-sky transition-colors">Noticias</Link>
+          <Link href="/contacto" className="hover:text-fundacion-sky transition-colors">Contacto</Link>
         </nav>
 
         {/* Botón Donar Desktop */}
         <div className="hidden md:block">
           <Link
-            href="/donate"
+            href="/donar"
             className="bg-fundacion-pink text-white font-bold py-2 px-6 rounded-full hover:bg-white hover:text-fundacion-pink transition-colors duration-300"
           >
             DONAR
@@ -61,11 +61,11 @@ export default function Header() {
       {/* Menú Móvil Desplegable */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-fundacion-blue absolute top-full left-0 w-full shadow-lg border-t border-white/10 flex flex-col items-center py-6 space-y-4">
-          <Link href="/about-us" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Sobre Nosotros</Link>
-          <Link href="/programs" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Programas</Link>
-          <Link href="/news" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Noticias</Link>
-          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Contacto</Link>
-          <Link href="/donate" onClick={() => setIsMobileMenuOpen(false)} className="bg-fundacion-pink text-white font-bold py-2 px-8 rounded-full mt-4">
+          <Link href="/sobre-nosotros" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Sobre Nosotros</Link>
+          <Link href="/programas" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Programas</Link>
+          <Link href="/noticias" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Noticias</Link>
+          <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Contacto</Link>
+          <Link href="/donar" onClick={() => setIsMobileMenuOpen(false)} className="bg-fundacion-pink text-white font-bold py-2 px-8 rounded-full mt-4">
             DONAR
           </Link>
         </div>

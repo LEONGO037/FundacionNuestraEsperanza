@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Noticias() {
   return (
     <div className="container mx-auto p-8">
@@ -7,7 +9,7 @@ export default function Noticias() {
         <div className="p-4 border rounded-lg shadow">
           <h2 className="font-bold text-xl">Noticia de Ejemplo</h2>
           <p className="mt-2 text-gray-600">Extracto de la noticia...</p>
-          <a href="/news/noticia-ejemplo" className="text-blue-500 hover:underline mt-4 inline-block">Leer más</a>
+          <Link href="/noticias/noticia-ejemplo" className="text-fundacion-blue hover:underline mt-4 inline-block">Leer más</Link>
         </div>
       </div>
     </div>

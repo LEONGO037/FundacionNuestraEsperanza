@@ -1,11 +1,13 @@
 # Especificación de Wireframes Estructurales (Fase 1)
 
-Este documento detalla la distribución de contenidos y la jerarquía visual de las 7 páginas que conforman el sitio web de la **Fundación Nuestra Esperanza**, optimizadas para mejorar la experiencia de usuario (UX/UI).
+Este documento detalla la distribución de contenidos, la jerarquía visual y la distribución esquemática de las páginas que conforman el sitio web de la **Fundación Nuestra Esperanza**, optimizadas para mejorar la experiencia de usuario (UX/UI).
 
 ---
 
 ## 1. Página de Inicio (`/`)
-Diseño de una landing page fluida que capte la atención de forma inmediata:
+Diseño de una landing page fluida que capte la atención de forma inmediata.
+
+![Wireframe Visual - Inicio](./wireframe_homepage.jpg)
 
 ```text
 [------------------------------ HEADER ------------------------------]
@@ -93,7 +95,9 @@ Enfocada en construir confianza e informar sobre la trayectoria:
 ---
 
 ## 5. Donaciones (`/donate`)
-Diseño de interfaz transparente, seguro y directo para facilitar el aporte:
+Diseño de interfaz transparente, seguro y directo para facilitar el aporte.
+
+![Wireframe Visual - Donaciones](./wireframe_donate.jpg)
 
 ```text
 ========================= PÁGINA DE DONACIONES =======================
@@ -117,7 +121,9 @@ Diseño de interfaz transparente, seguro y directo para facilitar el aporte:
 ---
 
 ## 6. Voluntariado (`/volunteer`)
-Formulario de captación intuitivo y motivacional:
+Formulario de captación intuitivo y motivacional.
+
+![Wireframe Visual - Voluntariado](./wireframe_volunteer.jpg)
 
 *   **Banner Superior:** Mensaje inspirador sobre el valor de ser voluntario.
 *   **Formulario Estructurado:**

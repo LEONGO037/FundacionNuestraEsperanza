@@ -1,28 +1,45 @@
+import EncabezadoPagina from "@/components/EncabezadoPagina";
+import FormularioVoluntariado from "@/components/FormularioVoluntariado";
+
+export const metadata = {
+  title: "Voluntariado",
+  description:
+    "Súmate como voluntario o voluntaria de la Fundación Nuestra Esperanza y acompaña a niños, niñas y adolescentes con cáncer en Bolivia con tu tiempo y tus habilidades.",
+};
+
 export default function Voluntariado() {
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6">Únete como Voluntario</h1>
-      <form className="max-w-md mx-auto space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Nombre Completo</label>
-          <input type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" />
+    <>
+      <EncabezadoPagina
+        titulo="Únete como Voluntario"
+        subtitulo="Tu tiempo también transforma: acompaña a los niños, niñas y adolescentes de la fundación en actividades recreativas, logística, difusión y más."
+      />
+
+      <section className="container mx-auto max-w-2xl px-6 py-12">
+        {/* Texto preliminar: validar con la fundación */}
+        <p className="leading-relaxed text-gray-800">
+          Ser voluntario en la Fundación Nuestra Esperanza significa regalar
+          tiempo de calidad a niños, niñas y adolescentes que atraviesan un
+          tratamiento contra el cáncer, y apoyar a sus familias en el día a
+          día del albergue Casa Esperanza. Completa el formulario y cuéntanos
+          cómo te gustaría ayudar.
+        </p>
+
+        <div className="mt-8 rounded-xl bg-white p-6 shadow-md md:p-8">
+          <h2 className="text-xl font-bold text-fundacion-blue">
+            Formulario de inscripción
+          </h2>
+          <p className="mt-2 mb-6 text-sm text-gray-600">
+            Los campos marcados con * son obligatorios.
+          </p>
+          <FormularioVoluntariado />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-          <input type="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Teléfono</label>
-          <input type="tel" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">¿Por qué quieres unirte?</label>
-          <textarea className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" rows="4"></textarea>
-        </div>
-        <button type="button" className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">
-          Enviar Registro
-        </button>
-      </form>
-    </div>
+
+        <p className="mt-6 text-sm leading-relaxed text-gray-600">
+          Una vez enviada tu solicitud, el equipo de la fundación se pondrá en
+          contacto contigo por el correo o el teléfono que proporcionaste.
+        </p>
+      </section>
+    </>
   );
 }

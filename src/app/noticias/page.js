@@ -21,7 +21,11 @@ export default function Noticias() {
         {noticias.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {noticias.map((noticia) => (
-              <TarjetaNoticia key={noticia.slug} noticia={noticia} />
+              <TarjetaNoticia
+                key={noticia.slug}
+                noticia={noticia}
+                extracto={noticia.resumen}
+              />
             ))}
           </div>
         ) : (

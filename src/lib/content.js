@@ -73,6 +73,7 @@ function normalizeNoticia({ slug, data }) {
     date: toIsoString(data.date),
     author: data.author ?? null,
     thumbnail: data.thumbnail ?? null,
+    resumen: data.resumen ?? "",
   };
 }
 

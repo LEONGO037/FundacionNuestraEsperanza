@@ -34,10 +34,15 @@ Para los 6 desarrolladores del equipo, seguir estas instrucciones para tener el 
 
 Decap CMS está configurado para gestionar el contenido. Puedes acceder localmente al panel de control de la siguiente manera:
 
-1. Asegúrate de que el servidor de desarrollo esté ejecutándose.
-2. Ingresa a: `http://localhost:3000/admin`
+1. En una terminal aparte, corre el servidor local de Decap (deja el proceso corriendo):
+   ```bash
+   npx decap-server
+   ```
+   Esto habilita `local_backend: true` (ya configurado en `public/admin/config.yml`), que permite editar y guardar contenido en local sin necesidad de iniciar sesión con GitHub.
+2. Asegúrate de que el servidor de desarrollo esté ejecutándose (`npm run dev`).
+3. Ingresa a: `http://localhost:3000/admin`
 
-*Nota: Para el despliegue final y correcto funcionamiento de Decap CMS es necesario tener habilitado Netlify Identity o algún backend de autenticación en GitHub OAuth.*
+*Nota: Para el despliegue final y correcto funcionamiento de Decap CMS en producción es necesario tener habilitado Netlify Identity o algún backend de autenticación en GitHub OAuth (pendiente de la fase de despliegue).*
 
 ## Stack Tecnológico
 - [Next.js](https://nextjs.org/) (Framework)

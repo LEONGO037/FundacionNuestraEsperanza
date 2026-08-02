@@ -74,9 +74,18 @@ export async function enviarSolicitudVoluntariado(estadoAnterior, formData) {
       return { exito: false, errores, valores };
     }
 
-    await enviarNotificacion(valores);
+    const resultadoNotificacion = await enviarNotificacion(valores);
 
-    return { exito: true, errores: null, valores: null };
+    // Campo aditivo (no rompe el contrato existente): indica si el correo a
+    // la fundación quedó pendiente. La solicitud en sí siempre es "exito"
+    // porque ya quedó validada y registrada; el correo es solo la
+    // notificación interna.
+    return {
+      exito: true,
+      errores: null,
+      valores: null,
+      notificacionPendiente: resultadoNotificacion.enviado !== true,
+    };
   } catch {
     // Error inesperado: mensaje genérico, sin exponer detalles técnicos.
     return {

@@ -3,10 +3,19 @@ backend:
   repo: LEONGO037/FundacionNuestraEsperanza
   branch: main # Cambiar si se usa otra rama
 
+# Permite editar/guardar contenido en local (npx decap-server) sin pasar por
+# el login de GitHub. El backend de producción de arriba sigue intacto; para
+# producción falta un proxy OAuth propio (GitHub no permite implicit grant),
+# pendiente de la fase de despliegue.
+local_backend: true
+
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
+  # PROPUESTA (Marvin, Fase 4) — ajustes al modelo de contenido no
+  # documentados previamente por Christian (Fase 1). Validar con él antes
+  # de mergear a main: campo "order" en programas y "resumen" en noticias.
   - name: "programas"
     label: "Programas"
     folder: "src/content/programas"
@@ -17,6 +26,7 @@ collections:
       - {label: "Fecha", name: "date", widget: "datetime"}
       - {label: "Imagen Destacada", name: "thumbnail", widget: "image", required: false}
       - {label: "Descripción Corta", name: "description", widget: "text"}
+      - {label: "Orden de visualización", name: "order", widget: "number", required: false, hint: "Número menor aparece primero en el listado. Dejar vacío para ordenar alfabéticamente."}
       - {label: "Cuerpo", name: "body", widget: "markdown"}
 
   - name: "noticias"
@@ -29,6 +39,7 @@ collections:
       - {label: "Fecha", name: "date", widget: "datetime"}
       - {label: "Autor", name: "author", widget: "string", required: false}
       - {label: "Imagen Destacada", name: "thumbnail", widget: "image", required: false}
+      - {label: "Resumen (para el listado)", name: "resumen", widget: "text", required: false, hint: "Resumen corto que se muestra en la tarjeta del listado de noticias (recomendado: máx. 160 caracteres)."}
       - {label: "Cuerpo", name: "body", widget: "markdown"}
 
   - name: "testimonios"

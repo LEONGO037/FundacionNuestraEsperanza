@@ -13,13 +13,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// SEO
 export const metadata = {
   title: {
-    default: "Fundación Nuestra Esperanza",
-    template: "%s | Fundación Nuestra Esperanza",
+    template: '%s | Fundación Nuestra Esperanza',
+    default: 'Fundación Nuestra Esperanza | Apoyo a niños con cáncer',
   },
   description:
     "Fundación Nuestra Esperanza apoya a niños, niñas y adolescentes de escasos recursos con cáncer y a sus familias en Bolivia, a través del albergue Casa Esperanza y programas gratuitos de apoyo integral.",
+  openGraph: {
+    title: "Fundación Nuestra Esperanza",
+    description: "Organización dedicada a mejorar la calidad de vida de niños con cáncer en Bolivia.",
+    url: "https://fundacion-nuestra-esperanza.cloud",
+    siteName: "Fundación Nuestra Esperanza",
+    locale: "es_BO",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {

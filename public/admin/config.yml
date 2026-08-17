@@ -2,6 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
+logo_url: "/logo.jpg"
+
 # Permite editar/guardar contenido en local (npx decap-server) sin pasar por
 # el login de GitHub. El backend de producción de arriba sigue intacto; para
 # producción falta un proxy OAuth propio (GitHub no permite implicit grant),

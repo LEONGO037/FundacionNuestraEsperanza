@@ -40,6 +40,21 @@ export default function RootLayout({ children }) {
     >
       <head>
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== "undefined") {
+                window.addEventListener("load", function() {
+                  if (window.netlifyIdentity) {
+                    window.netlifyIdentity.on("login", function() {
+                      document.location.href = "/admin/";
+                    });
+                  }
+                });
+              }
+            `,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         <GlobalProvider>

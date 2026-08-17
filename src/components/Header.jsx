@@ -34,7 +34,15 @@ export default function Header() {
           <Link href="/voluntariado" className="hover:text-fundacion-sky transition-colors">Voluntariado</Link>
           <Link href="/contacto" className="hover:text-fundacion-sky transition-colors">Contacto</Link>
           <button 
-            onClick={() => window.netlifyIdentity && window.netlifyIdentity.open()}
+            onClick={() => {
+              if (window.netlifyIdentity) {
+                if (window.netlifyIdentity.currentUser()) {
+                  window.location.href = "/admin/";
+                } else {
+                  window.netlifyIdentity.open();
+                }
+              }
+            }}
             className="text-white hover:text-fundacion-sky transition-colors font-bold text-sm bg-white/10 px-3 py-1 rounded"
           >
             Login
@@ -78,7 +86,13 @@ export default function Header() {
           <button 
             onClick={() => {
               setIsMobileMenuOpen(false);
-              window.netlifyIdentity && window.netlifyIdentity.open();
+              if (window.netlifyIdentity) {
+                if (window.netlifyIdentity.currentUser()) {
+                  window.location.href = "/admin/";
+                } else {
+                  window.netlifyIdentity.open();
+                }
+              }
             }}
             className="text-fundacion-sky font-bold text-lg"
           >

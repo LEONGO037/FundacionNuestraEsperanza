@@ -1,7 +1,6 @@
 backend:
-  name: github
-  repo: LEONGO037/FundacionNuestraEsperanza
-  branch: main # Cambiar si se usa otra rama
+  name: git-gateway
+  branch: main
 
 # Permite editar/guardar contenido en local (npx decap-server) sin pasar por
 # el login de GitHub. El backend de producción de arriba sigue intacto; para
@@ -49,4 +48,5 @@ collections:
     fields:
       - {label: "Nombre de la Persona", name: "title", widget: "string"}
       - {label: "Rol o Relación", name: "role", widget: "string", required: false}
+      - {label: "Foto (Avatar)", name: "avatar", widget: "image", required: false}
       - {label: "Testimonio", name: "body", widget: "markdown"}

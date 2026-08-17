@@ -82,6 +82,7 @@ function normalizeTestimonio({ slug, data, content }) {
     slug,
     title: data.title ?? "",
     role: data.role ?? null,
+    avatar: data.avatar ?? null,
     body: content.trim(),
   };
 }

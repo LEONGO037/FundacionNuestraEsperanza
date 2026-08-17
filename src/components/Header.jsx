@@ -26,11 +26,19 @@ export default function Header() {
         </div>
 
         {/* Navegación Principal Desktop */}
-        <nav className="hidden md:flex space-x-6 font-medium">
+        <nav className="hidden md:flex items-center space-x-6 font-medium">
+          <Link href="/" className="hover:text-fundacion-sky transition-colors">Inicio</Link>
           <Link href="/sobre-nosotros" className="hover:text-fundacion-sky transition-colors">Sobre Nosotros</Link>
           <Link href="/programas" className="hover:text-fundacion-sky transition-colors">Programas</Link>
           <Link href="/noticias" className="hover:text-fundacion-sky transition-colors">Noticias</Link>
+          <Link href="/voluntariado" className="hover:text-fundacion-sky transition-colors">Voluntariado</Link>
           <Link href="/contacto" className="hover:text-fundacion-sky transition-colors">Contacto</Link>
+          <button 
+            onClick={() => window.netlifyIdentity && window.netlifyIdentity.open()}
+            className="text-white hover:text-fundacion-sky transition-colors font-bold text-sm bg-white/10 px-3 py-1 rounded"
+          >
+            Login
+          </button>
         </nav>
 
         {/* Botón Donar Desktop */}
@@ -61,10 +69,21 @@ export default function Header() {
       {/* Menú Móvil Desplegable */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-fundacion-blue absolute top-full left-0 w-full shadow-lg border-t border-white/10 flex flex-col items-center py-6 space-y-4">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Inicio</Link>
           <Link href="/sobre-nosotros" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Sobre Nosotros</Link>
           <Link href="/programas" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Programas</Link>
           <Link href="/noticias" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Noticias</Link>
+          <Link href="/voluntariado" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Voluntariado</Link>
           <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-fundacion-sky transition-colors text-lg">Contacto</Link>
+          <button 
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              window.netlifyIdentity && window.netlifyIdentity.open();
+            }}
+            className="text-fundacion-sky font-bold text-lg"
+          >
+            Login
+          </button>
           <Link href="/donar" onClick={() => setIsMobileMenuOpen(false)} className="bg-fundacion-pink text-white font-bold py-2 px-8 rounded-full mt-4">
             DONAR
           </Link>

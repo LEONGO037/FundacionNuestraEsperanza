@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { GlobalProvider } from "@/context/GlobalContext";
 
 const geistSans = Geist({
@@ -37,12 +38,16 @@ export default function RootLayout({ children }) {
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
+      </head>
       <body className="min-h-full flex flex-col">
         <GlobalProvider>
           <Header />
           <main className="flex-grow">
             {children}
           </main>
+          <Footer />
         </GlobalProvider>
       </body>
     </html>

@@ -5,6 +5,7 @@ export default function LlamadaALaAccion({
   titulo = "Tú también puedes ser parte",
   mensaje = "Tu apoyo permite que más niños, niñas y adolescentes con cáncer reciban acompañamiento integral junto a sus familias.",
   mostrarVoluntariado = true,
+  mostrarDonar = true,
 }) {
   return (
     <section className="bg-fundacion-pale-pink">
@@ -14,12 +15,14 @@ export default function LlamadaALaAccion({
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-gray-700">{mensaje}</p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            href="/donar"
-            className="rounded-full bg-fundacion-pink px-8 py-3 text-lg font-bold text-white transition-colors duration-300 hover:bg-fundacion-blue focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-blue"
-          >
-            Donar ahora
-          </Link>
+          {mostrarDonar && (
+            <Link
+              href="/donar"
+              className="rounded-full bg-fundacion-pink px-8 py-3 text-lg font-bold text-white transition-colors duration-300 hover:bg-fundacion-blue focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-blue"
+            >
+              Donar ahora
+            </Link>
+          )}
           {mostrarVoluntariado && (
             <Link
               href="/voluntariado"

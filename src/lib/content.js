@@ -78,12 +78,14 @@ function normalizeNoticia({ slug, data }) {
 }
 
 function normalizeTestimonio({ slug, data, content }) {
+  // Strip HTML comments (e.g. <!-- Contenido preliminar... -->) from the body
+  const cleanBody = content.trim().replace(/<!--[\s\S]*?-->/g, "").trim();
   return {
     slug,
     title: data.title ?? "",
     role: data.role ?? null,
     avatar: data.avatar ?? null,
-    body: content.trim(),
+    body: cleanBody,
   };
 }
 

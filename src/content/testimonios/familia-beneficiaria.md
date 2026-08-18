@@ -1,5 +1,5 @@
 ---
-title: Familia beneficiaria esternocleidomastoideo
+title: Familia beneficiaria
 role: Huéspedes del albergue Casa Esperanza
 ---
 

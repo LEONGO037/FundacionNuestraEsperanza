@@ -28,7 +28,7 @@ export default function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-fundacion-sky rounded-full opacity-[0.06] blur-3xl" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 py-20 md:py-28 text-center">
+        <div className="relative z-10 container mx-auto px-6 pt-28 md:pt-36 pb-20 md:pb-28 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up">
             Toda vida merece{" "}
             <span className="text-white">esperanza</span>

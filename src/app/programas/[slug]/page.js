@@ -43,7 +43,7 @@ export default async function ProgramaDetalle({ params }) {
 
   return (
     <>
-      <article className="container mx-auto max-w-3xl px-6 py-12">
+      <article className="container mx-auto max-w-3xl px-6 pt-24 md:pt-28 pb-12">
         <Link
           href="/programas"
           className="font-semibold text-fundacion-blue hover:underline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink"

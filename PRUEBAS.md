@@ -95,3 +95,28 @@ Observación de desarrollo (no es bug del sitio): ejecutar `npm run build` mient
 2. **Imagen del código QR** de banca móvil → colocar en `public/images/qr-donaciones.png` y activar el bloque comentado en `src/app/donar/page.js`.
 3. **Credenciales SMTP y correo de destino** para la notificación del formulario de voluntariado → variables documentadas en `.env.example`; la implementación del transporte (nodemailer) corresponde a la Fase 4 de Marvin Mollo (ver `src/lib/notificaciones.js`).
 4. Validación institucional de los textos marcados con `{/* Texto preliminar: validar con la fundación */}` en Donar, Voluntariado y Sobre Nosotros, y del contenido semilla del CMS (`<!-- Contenido preliminar -->`).
+
+---
+
+## 10. Auditoría Visual y Pruebas Cross-Browser (Fase 5)
+
+**Responsable:** Christian Coronel · **Fecha de ejecución:** Agosto 2026  
+
+Como parte de la Fase 5, se ejecutó una auditoría exhaustiva centrada en la capa de presentación (UI/UX), asegurando la coherencia visual del Sistema de Diseño en las vistas estáticas y su correcto despliegue responsivo.
+
+### 10.1 Verificación Cross-Browser y Dispositivos
+| Caso de prueba | Dispositivo / Navegador | Resultado obtenido | Estado |
+|---|---|---|---|
+| Fidelidad de degradados y `mix-blend-mode` | Chrome, Safari, Edge, Firefox | Animaciones `float` y desenfoques (blur) procesados correctamente en motores WebKit y Blink. | OK |
+| Renderizado tipográfico | iOS Safari, Android Chrome | Fuentes legibles (`leading-relaxed`), sin desbordes de texto. | OK |
+| Grid de Aliados (`/sobre-nosotros`) | Móvil (360px), Tablet (768px), Desktop (1280px) | Transición perfecta de 2 columnas en móvil a 3 en tablet y 5 en desktop. | OK |
+| Tarjetas de programas y donación | Móvil, Desktop | Apiladas (1 columna) en pantallas pequeñas, expandidas en desktop; efectos `hover` fluidos. | OK |
+| Iframe embebido (Google Maps) | Móvil (iOS/Android) | Ancho `100%` respetado; configurado para no bloquear el scroll vertical en móviles. | OK |
+
+### 10.2 Auditoría Visual y Coherencia de Marca
+| Verificación | Criterio de aceptación | Resultado obtenido | Estado |
+|---|---|---|---|
+| Uso de Paleta Corporativa | Uso estricto de variables `@theme inline` (`--color-fundacion-*`). | Se rediseñó el total de las 5 páginas para usar *navy blue, pink, cyan, green* y *orange* correctamente. | OK |
+| Jerarquía y Espaciado | Espaciado simétrico y aire entre bloques (Tailwind `py-20`, `gap-8`). | Consistencia visual lograda entre Inicio, Sobre Nosotros y Contacto. Sensación "premium". | OK |
+| Componentes Compartidos | Encabezados deben ser uniformes en todas las vistas. | Se corrigió `EncabezadoPagina.jsx` para centrar su contenido globalmente. | OK |
+| Datos Placeholder (Bug Visual) | Limpiar datos falsos, lorem ipsum o assets temporales. | Se insertó directorio real (4 personas), 5 aliados verdaderos, y dirección/mapa de Miraflores verídicos. | OK |

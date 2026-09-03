@@ -120,3 +120,54 @@ Como parte de la Fase 5, se ejecutó una auditoría exhaustiva centrada en la ca
 | Jerarquía y Espaciado | Espaciado simétrico y aire entre bloques (Tailwind `py-20`, `gap-8`). | Consistencia visual lograda entre Inicio, Sobre Nosotros y Contacto. Sensación "premium". | OK |
 | Componentes Compartidos | Encabezados deben ser uniformes en todas las vistas. | Se corrigió `EncabezadoPagina.jsx` para centrar su contenido globalmente. | OK |
 | Datos Placeholder (Bug Visual) | Limpiar datos falsos, lorem ipsum o assets temporales. | Se insertó directorio real (4 personas), 5 aliados verdaderos, y dirección/mapa de Miraflores verídicos. | OK |
+
+---
+
+## 11. Auditoría SEO y Accesibilidad — Lighthouse (Fase 5)
+
+**Responsable:** Marvin Mollo · **Fecha de ejecución:** 24 de agosto de 2026
+**Entorno:** build de producción (`npm run build && npm run start`), Next.js 16.2.11, Lighthouse 13.4.1 (headless, navegador Brave). Se auditaron las 9 rutas principales del sitio ya con el rediseño de Header/Footer/Inicio/Contacto/Donar/Voluntariado y Google Analytics integrados.
+
+Alcance: **solo auditoría y documentación**, sin corrección de hallazgos que pertenecen a otros módulos (diseño, SEO de Kael) — se señalan como pendientes accionables.
+
+### 11.1 Resultados por página
+
+| Ruta | Accesibilidad | SEO | Buenas Prácticas | Rendimiento | LCP | TBT | CLS | Speed Index |
+|---|---|---|---|---|---|---|---|---|
+| `/` | 96 | 100 | 100 | 97 | 2.5 s | 20 ms | 0 | 0.8 s |
+| `/sobre-nosotros` | 96 | 100 | 100 | 98 | 2.5 s | 40 ms | 0 | 0.8 s |
+| `/programas` | 96 | 100 | 100 | 96 | 2.8 s | 40 ms | 0 | 0.8 s |
+| `/programas/[slug]` | 96 | 100 | 100 | 98 | 2.5 s | 20 ms | 0 | 0.8 s |
+| `/noticias` | 96 | 100 | 100 | 98 | 2.5 s | 40 ms | 0 | 0.8 s |
+| `/noticias/[slug]` | 95 | 100 | 100 | 98 | 2.5 s | 40 ms | 0 | 0.8 s |
+| `/donar` | 96 | 100 | 100 | 97 | 2.5 s | 30 ms | 0 | 0.9 s |
+| `/voluntariado` | 96 | 100 | 100 | 97 | 2.5 s | 20 ms | 0 | 0.8 s |
+| `/contacto` | 96 | 100 | 100 | 98 | 2.5 s | 10 ms | 0 | 0.8 s |
+
+LCP = Largest Contentful Paint, TBT = Total Blocking Time, CLS = Cumulative Layout Shift.
+
+**Evidencia (reportes originales de Lighthouse, HTML autocontenido):** [`docs/lighthouse/home.html`](docs/lighthouse/home.html) · [`sobre-nosotros.html`](docs/lighthouse/sobre-nosotros.html) · [`programas.html`](docs/lighthouse/programas.html) · [`programa-detalle.html`](docs/lighthouse/programa-detalle.html) · [`noticias.html`](docs/lighthouse/noticias.html) · [`noticia-detalle.html`](docs/lighthouse/noticia-detalle.html) · [`donar.html`](docs/lighthouse/donar.html) · [`voluntariado.html`](docs/lighthouse/voluntariado.html) · [`contacto.html`](docs/lighthouse/contacto.html)
+
+### 11.2 Nota sobre el SEO=100 (no leer como "SEO completo")
+
+Lighthouse marca `canonical` y `robots.txt` como *not applicable* (no penalizan el score aunque no existan) y `structured-data` (JSON-LD) como auditoría manual (ni se evalúa). El 100 no certifica que el SEO esté terminado.
+
+- **Avance desde la última revisión:** ya existe `openGraph` a nivel global en `src/app/layout.js` (title, description, url, siteName, locale, type) — antes no existía.
+- **Pendiente (módulo SEO/Kael):** falta `og:image` dentro de `openGraph` (sin imagen, las vistas previas al compartir en redes salen sin foto), `metadataBase`, Twitter Card, `sitemap.js`, `robots.js` y datos estructurados (JSON-LD).
+
+### 11.3 Hallazgos de accesibilidad WCAG 2.1 AA (priorizados)
+
+| Prioridad | Hallazgo | Dónde | Módulo responsable |
+|---|---|---|---|
+| **Alta** | Contraste insuficiente de los colores de marca sobre fondos claros: rosa `#ff4874` (3.04–3.26:1), cian `#00c2cb` (2.19:1) y verde `#78b833` (2.41:1) — todos requieren 4.5:1 (texto normal) o 3:1 (texto grande/negrita). Afecta botones CTA, contadores animados, badges "uppercase", enlaces "Ver más/Leer más" y el footer, en **9 de 9 páginas**. | Token de color en `globals.css` (`@theme inline`) | Diseño (Alan) |
+| **Media** | Orden de encabezados inválido en `/noticias/[slug]`: el `<h1>` del título salta directo a `<h3>` del Footer sin pasar por `<h2>` (Footer.jsx usa `<h3>` para "Fundación Nuestra Esperanza", "Menú Rápido", "Cómo Ayudar", "Suscríbete" como estilo visual, no como jerarquía real). | `src/components/Footer.jsx` | Compartido (Footer) |
+
+**Resuelto desde la auditoría anterior:** el botón de menú hamburguesa (antes sin nombre accesible, fallaba en las 9 páginas) ya tiene manejo correcto — no vuelve a aparecer en esta corrida.
+
+### 11.4 Rendimiento (informativo, fuera del alcance de esta fase)
+
+Todas las páginas entre 96–98, LCP entre 2.5–2.8s y CLS en 0 (sin saltos de layout). Nota: Lighthouse tiene variabilidad entre corridas (una ejecución previa registró 91/LCP 3.4s en `/`); estos valores son de la corrida final, la que queda documentada como evidencia en `docs/lighthouse/`. No se investigó a fondo por no ser parte del alcance de Fase 5 (SEO + accesibilidad).
+
+### 11.5 Conclusión
+
+Sin hallazgos originados en las colecciones del CMS (mi propio módulo) en esta corrida. Los dos hallazgos de accesibilidad y los pendientes de SEO son de diseño/Alan, SEO/Kael y del componente compartido Footer — se documentan aquí para que cada responsable los tome, sin haberse modificado código en esta fase.

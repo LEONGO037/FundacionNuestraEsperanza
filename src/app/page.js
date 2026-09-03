@@ -5,6 +5,7 @@ import LlamadaALaAccion from "@/components/LlamadaALaAccion";
 import ContadorAnimado from "@/components/ContadorAnimado";
 import Image from "next/image";
 import Link from "next/link";
+import TextoAnimado from "@/components/TextoAnimado";
 
 export default function Home() {
   const noticias = getNoticiasRecientes(3);
@@ -23,15 +24,23 @@ export default function Home() {
       <section className="relative bg-fundacion-blue overflow-hidden min-h-[520px] md:min-h-[600px] flex items-center justify-center">
         {/* Elementos decorativos de fondo — formas orgánicas con blur */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-[-80px] left-[-60px] w-72 h-72 bg-fundacion-cyan rounded-full opacity-15 blur-3xl animate-float" />
-          <div className="absolute bottom-[-60px] right-[-40px] w-80 h-80 bg-fundacion-pink rounded-full opacity-12 blur-3xl animate-float delay-300" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-fundacion-sky rounded-full opacity-[0.06] blur-3xl" />
+          <div className="absolute top-[-80px] left-[-60px] w-72 h-72 bg-fundacion-cyan rounded-full opacity-25 blur-3xl animate-drift" />
+          <div
+            className="absolute bottom-[-60px] right-[-40px] w-80 h-80 bg-fundacion-pink rounded-full opacity-20 blur-3xl animate-drift"
+            style={{ animationDelay: "3.5s" }}
+          />
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-fundacion-sky rounded-full opacity-[0.16] blur-3xl animate-drift"
+            style={{ animationDelay: "7s" }}
+          />
         </div>
 
         <div className="relative z-10 container mx-auto px-6 pt-28 md:pt-36 pb-20 md:pb-28 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up">
-            Toda vida merece{" "}
-            <span className="text-white">esperanza</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+            <span className="inline-block animate-fade-in-up">Toda</span>{" "}
+            <span className="inline-block animate-fade-in-up delay-100">vida</span>{" "}
+            <span className="inline-block animate-fade-in-up delay-200">merece</span>{" "}
+            <span className="inline-block text-shimmer animate-fade-in-up delay-300">esperanza</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-200">
@@ -41,21 +50,23 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-400">
             <Link
               href="/donar"
-              className="inline-flex items-center justify-center bg-fundacion-pink text-white font-bold py-4 px-10 rounded-full text-lg shadow-lg shadow-fundacion-pink/30 hover:bg-white hover:text-fundacion-pink hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white"
+              aria-label="Quiero Donar"
+              className="hover-letras inline-flex items-center justify-center bg-fundacion-pink text-white font-bold py-4 px-10 rounded-full text-lg shadow-lg shadow-fundacion-pink/30 hover:bg-white hover:text-fundacion-pink hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
-              Quiero Donar
+              <TextoAnimado texto="Quiero Donar" />
             </Link>
             <Link
               href="/voluntariado"
-              className="inline-flex items-center justify-center bg-transparent text-white border-2 border-white/60 font-bold py-4 px-10 rounded-full text-lg hover:bg-white hover:text-fundacion-blue hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-cyan"
+              aria-label="Ser Voluntario"
+              className="hover-letras inline-flex items-center justify-center bg-white/10 backdrop-blur-sm backdrop-saturate-150 text-white border-2 border-white/60 font-bold py-4 px-10 rounded-full text-lg shadow-glass-sm hover:bg-white hover:text-fundacion-blue hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-cyan"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              Ser Voluntario
+              <TextoAnimado texto="Ser Voluntario" />
             </Link>
           </div>
         </div>
@@ -84,7 +95,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
             {/* Familias */}
-            <div className="group bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border-t-4 border-fundacion-pink animate-scale-in delay-200">
+            <div className="group bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-2xl hover:bg-fundacion-pale-pink transition-all duration-500 hover:-translate-y-1 border-t-4 border-fundacion-pink animate-scale-in delay-200">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-fundacion-pale-pink mb-5 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-8 h-8 text-fundacion-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -97,7 +108,7 @@ export default function Home() {
             </div>
 
             {/* Años */}
-            <div className="group bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border-t-4 border-fundacion-cyan animate-scale-in delay-400">
+            <div className="group bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-2xl hover:bg-[#e0fcff] transition-all duration-500 hover:-translate-y-1 border-t-4 border-fundacion-cyan animate-scale-in delay-400">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#e0fcff] mb-5 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-8 h-8 text-fundacion-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -110,7 +121,7 @@ export default function Home() {
             </div>
 
             {/* Voluntarios */}
-            <div className="group bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border-t-4 border-fundacion-green animate-scale-in delay-600">
+            <div className="group bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-2xl hover:bg-[#edf7e0] transition-all duration-500 hover:-translate-y-1 border-t-4 border-fundacion-green animate-scale-in delay-600">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#edf7e0] mb-5 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-8 h-8 text-fundacion-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -183,16 +194,16 @@ export default function Home() {
             {testimonios.map((testimonio, index) => {
               // Colores alternos para cada tarjeta (inspirado en las 5 manos del isotipo)
               const colores = [
-                { borde: "border-fundacion-pink", icono: "text-fundacion-pink", fondo: "bg-fundacion-pale-pink" },
-                { borde: "border-fundacion-cyan", icono: "text-fundacion-cyan", fondo: "bg-[#e0fcff]" },
-                { borde: "border-fundacion-green", icono: "text-fundacion-green", fondo: "bg-[#edf7e0]" },
+                { borde: "border-fundacion-pink", icono: "text-fundacion-pink", fondo: "bg-fundacion-pale-pink", hover: "hover:bg-fundacion-pale-pink" },
+                { borde: "border-fundacion-cyan", icono: "text-fundacion-cyan", fondo: "bg-[#e0fcff]", hover: "hover:bg-[#e0fcff]" },
+                { borde: "border-fundacion-green", icono: "text-fundacion-green", fondo: "bg-[#edf7e0]", hover: "hover:bg-[#edf7e0]" },
               ];
               const color = colores[index % colores.length];
 
               return (
                 <div
                   key={testimonio.slug}
-                  className={`relative bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1 p-8 flex flex-col border-l-4 ${color.borde}`}
+                  className={`relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 p-8 flex flex-col border-l-4 ${color.borde} ${color.hover}`}
                 >
                   {/* Comilla decorativa */}
                   <svg

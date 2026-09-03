@@ -13,7 +13,7 @@ import {
 const ESTADO_INICIAL = { exito: null, errores: null, valores: null };
 
 const CLASE_CAMPO =
-  "mt-1 block w-full rounded-md border bg-white p-2 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink";
+  "mt-1 block w-full rounded-md border bg-white p-2 shadow-sm transition-shadow duration-300 focus:shadow-md focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink";
 
 function claseCampo(tieneError) {
   return `${CLASE_CAMPO} ${tieneError ? "border-red-600" : "border-gray-300"}`;
@@ -42,7 +42,7 @@ export default function FormularioVoluntariado() {
     return (
       <div
         role="status"
-        className="rounded-xl bg-fundacion-pale-pink p-8 text-center shadow-md"
+        className="rounded-xl bg-fundacion-pale-pink p-8 text-center shadow-lg animate-scale-in"
       >
         <h3 className="text-2xl font-bold text-fundacion-blue">
           ¡Gracias por querer ser parte!
@@ -240,7 +240,7 @@ export default function FormularioVoluntariado() {
       <button
         type="submit"
         disabled={enviando}
-        className="w-full rounded-full bg-fundacion-pink px-8 py-3 text-lg font-bold text-white transition-colors duration-300 hover:bg-fundacion-blue focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-blue disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-full bg-fundacion-pink px-8 py-3 text-lg font-bold text-white shadow-lg shadow-fundacion-pink/30 transition-all duration-300 hover:bg-fundacion-blue hover:shadow-xl hover:shadow-fundacion-blue/30 hover:-translate-y-0.5 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-blue disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
       >
         {enviando ? "Enviando..." : "Enviar solicitud"}
       </button>

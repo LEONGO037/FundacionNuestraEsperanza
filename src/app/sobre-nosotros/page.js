@@ -117,7 +117,7 @@ export default function SobreNosotros() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Misión */}
-            <div className="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-10 hover:bg-white/15 transition-colors duration-300 animate-fade-in-up delay-100">
+            <div className="rounded-2xl bg-white/10 backdrop-blur-sm backdrop-saturate-150 border border-white/20 shadow-glass-sm p-10 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 animate-fade-in-up delay-100">
               <div className="w-12 h-12 rounded-xl bg-fundacion-pink/20 flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-fundacion-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -130,7 +130,7 @@ export default function SobreNosotros() {
             </div>
 
             {/* Visión */}
-            <div className="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-10 hover:bg-white/15 transition-colors duration-300 animate-fade-in-up delay-200">
+            <div className="rounded-2xl bg-white/10 backdrop-blur-sm backdrop-saturate-150 border border-white/20 shadow-glass-sm p-10 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 animate-fade-in-up delay-200">
               <div className="w-12 h-12 rounded-xl bg-fundacion-cyan/20 flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-fundacion-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -156,14 +156,14 @@ export default function SobreNosotros() {
           </p>
           <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { valor: 400, sufijo: "+", etiqueta: "Familias acompañadas", color: "text-fundacion-pink", borde: "border-fundacion-pink" },
-              { valor: 12, sufijo: "+", etiqueta: "Años de trabajo continuo", color: "text-fundacion-cyan", borde: "border-fundacion-cyan" },
-              { valor: 5, sufijo: "", etiqueta: "Programas de apoyo integral", color: "text-fundacion-green", borde: "border-fundacion-green" },
-              { valor: 9, sufijo: "", etiqueta: "Departamentos atendidos", color: "text-fundacion-orange", borde: "border-fundacion-orange" },
+              { valor: 400, sufijo: "+", etiqueta: "Familias acompañadas", color: "text-fundacion-pink", borde: "border-fundacion-pink", hover: "hover:bg-fundacion-pale-pink" },
+              { valor: 12, sufijo: "+", etiqueta: "Años de trabajo continuo", color: "text-fundacion-cyan", borde: "border-fundacion-cyan", hover: "hover:bg-[#e0fcff]" },
+              { valor: 5, sufijo: "", etiqueta: "Programas de apoyo integral", color: "text-fundacion-green", borde: "border-fundacion-green", hover: "hover:bg-[#edf7e0]" },
+              { valor: 9, sufijo: "", etiqueta: "Departamentos atendidos", color: "text-fundacion-orange", borde: "border-fundacion-orange", hover: "hover:bg-orange-50" },
             ].map((c, i) => (
               <div
                 key={i}
-                className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 ${c.borde} animate-fade-in-up`}
+                className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 ${c.borde} ${c.hover} animate-fade-in-up`}
                 style={{ animationDelay: `${(i + 1) * 100}ms` }}
               >
                 <p className={`text-5xl font-bold ${c.color}`}>
@@ -187,7 +187,7 @@ export default function SobreNosotros() {
             {valores.map((v, i) => (
               <div
                 key={i}
-                className={`rounded-2xl ${v.bg} border-l-4 ${v.color} p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in-up`}
+                className={`rounded-2xl ${v.bg} border-l-4 ${v.color} p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-in-up`}
                 style={{ animationDelay: `${(i + 1) * 100}ms` }}
               >
                 <h3 className="text-xl font-bold text-fundacion-blue mb-3">{v.titulo}</h3>
@@ -214,10 +214,16 @@ export default function SobreNosotros() {
                 "from-fundacion-cyan to-fundacion-green",
                 "from-fundacion-orange to-fundacion-pink",
               ];
+              const bordesHover = [
+                "hover:border-fundacion-pink",
+                "hover:border-fundacion-blue",
+                "hover:border-fundacion-cyan",
+                "hover:border-fundacion-orange",
+              ];
               return (
                 <article
                   key={i}
-                  className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center animate-fade-in-up"
+                  className={`group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center border-t-4 border-transparent ${bordesHover[i]} animate-fade-in-up`}
                   style={{ animationDelay: `${(i + 1) * 100}ms` }}
                 >
                   <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${gradients[i]} flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
@@ -244,10 +250,18 @@ export default function SobreNosotros() {
             </p>
           </div>
           <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {aliados.map((aliado, i) => (
+            {aliados.map((aliado, i) => {
+              const bordesHover = [
+                "hover:border-fundacion-pink",
+                "hover:border-fundacion-cyan",
+                "hover:border-fundacion-green",
+                "hover:border-fundacion-orange",
+                "hover:border-fundacion-blue",
+              ];
+              return (
               <li
                 key={aliado.nombre}
-                className="group flex flex-col items-center text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up"
+                className={`group flex flex-col items-center text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-transparent ${bordesHover[i % bordesHover.length]} animate-fade-in-up`}
                 style={{ animationDelay: `${(i + 1) * 120}ms` }}
               >
                 <div className="w-14 h-14 rounded-full bg-fundacion-pale-blue flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
@@ -258,7 +272,8 @@ export default function SobreNosotros() {
                 <span className="text-lg font-bold text-fundacion-blue">{aliado.nombre}</span>
                 <span className="mt-2 text-sm text-fundacion-pink font-medium">{aliado.detalle}</span>
               </li>
-            ))}
+              );
+            })}
           </ul>
         </div>
       </section>

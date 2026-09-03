@@ -23,7 +23,7 @@ export default function BotonCopiar({ texto, etiqueta = "Copiar" }) {
       <button
         type="button"
         onClick={copiar}
-        className="rounded-full border-2 border-fundacion-blue px-4 py-1 text-sm font-bold text-fundacion-blue transition-colors duration-300 hover:bg-fundacion-blue hover:text-white focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink"
+        className="rounded-full border-2 border-fundacion-blue px-4 py-1 text-sm font-bold text-fundacion-blue shadow-sm transition-all duration-300 hover:bg-fundacion-blue hover:text-white hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink"
       >
         {etiqueta}
       </button>

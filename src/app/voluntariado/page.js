@@ -11,6 +11,9 @@ const areasVoluntariado = [
   {
     titulo: "Actividades Recreativas",
     descripcion: "Juega, lee y acompaña a los niños durante su estadía en el albergue para sacarles una sonrisa.",
+    borde: "border-fundacion-pink",
+    iconBg: "bg-fundacion-pale-pink",
+    hover: "hover:bg-fundacion-pale-pink",
     icono: (
       <svg className="w-8 h-8 text-fundacion-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -20,6 +23,9 @@ const areasVoluntariado = [
   {
     titulo: "Logística y Apoyo",
     descripcion: "Ayuda en la organización de eventos, clasificación de donaciones y mantenimiento de Casa Esperanza.",
+    borde: "border-fundacion-cyan",
+    iconBg: "bg-[#e0fcff]",
+    hover: "hover:bg-[#e0fcff]",
     icono: (
       <svg className="w-8 h-8 text-fundacion-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -29,6 +35,9 @@ const areasVoluntariado = [
   {
     titulo: "Difusión y Eventos",
     descripcion: "Apoya en redes sociales, diseño, fotografía o en la realización de campañas de concientización.",
+    borde: "border-fundacion-blue",
+    iconBg: "bg-fundacion-pale-blue",
+    hover: "hover:bg-fundacion-pale-blue",
     icono: (
       <svg className="w-8 h-8 text-fundacion-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
@@ -61,12 +70,12 @@ export default function Voluntariado() {
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {areasVoluntariado.map((area, index) => (
-              <div 
+              <div
                 key={index}
-                className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-fundacion-cyan flex flex-col items-center animate-fade-in-up`}
+                className={`group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 ${area.borde} ${area.hover} flex flex-col items-center animate-fade-in-up`}
                 style={{ animationDelay: `${(index + 1) * 150}ms` }}
               >
-                <div className="w-16 h-16 rounded-full bg-fundacion-pale-blue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className={`w-16 h-16 rounded-full ${area.iconBg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   {area.icono}
                 </div>
                 <h3 className="text-xl font-bold text-fundacion-blue mb-3">{area.titulo}</h3>

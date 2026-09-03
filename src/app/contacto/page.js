@@ -19,6 +19,7 @@ const canales = [
     etiquetaBoton: "Escribir por WhatsApp",
     color: "border-fundacion-green",
     bgIcon: "bg-green-50",
+    bgHover: "hover:bg-green-50",
     icono: (
       <svg className="w-7 h-7 text-green-600" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.711.927 3.15.927 3.178 0 5.766-2.587 5.768-5.766.002-3.181-2.585-5.769-5.769-5.769zm3.328 8.338c-.159-.053-.908-.454-1.002-.517-.026-.018-.08-.047-.131-.047-.077 0-.171.045-.237.12-.046.052-.405.518-.464.576-.027.027-.083.046-.118.046-.019 0-.071-.046-.145-.058-1.408-.246-2.288-1.026-2.825-1.748-.069-.092-.047-.158.013-.277.028-.058.071-.093.099-.12.029-.028.057-.058.086-.104.03-.047.046-.071.071-.118.026-.046.014-.131-.013-.204-.029-.071-.387-.974-.537-1.328-.151-.353-.26-.353-.35-.353-.053 0-.146-.001-.225-.001-.08 0-.213.033-.314.133-.102.102-.387.387-.387.954 0 .567.397 1.114.453 1.188.056.075 1.132 1.83 2.844 2.551.41.171.729.273.978.349.412.126.787.108 1.082.065.328-.047 1.002-.422 1.144-.828.143-.406.143-.754.1-.828-.043-.074-.153-.118-.312-.171z" />
@@ -34,6 +35,7 @@ const canales = [
     etiquetaBoton: "Ver en Google Maps",
     color: "border-fundacion-blue",
     bgIcon: "bg-fundacion-pale-blue",
+    bgHover: "hover:bg-fundacion-pale-blue",
     icono: (
       <svg className="w-7 h-7 text-fundacion-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -49,6 +51,7 @@ const canales = [
     etiquetaBoton: "Ver opciones de donación",
     color: "border-fundacion-pink",
     bgIcon: "bg-fundacion-pale-pink",
+    bgHover: "hover:bg-fundacion-pale-pink",
     icono: (
       <svg className="w-7 h-7 text-fundacion-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -80,7 +83,7 @@ export default function Contacto() {
             {canales.map((canal, i) => (
               <div
                 key={i}
-                className={`group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 ${canal.color} flex flex-col animate-fade-in-up`}
+                className={`group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 ${canal.color} ${canal.bgHover} flex flex-col animate-fade-in-up`}
                 style={{ animationDelay: `${(i + 1) * 120}ms` }}
               >
                 <div className={`w-14 h-14 rounded-xl ${canal.bgIcon} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>

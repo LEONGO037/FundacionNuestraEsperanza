@@ -35,6 +35,19 @@ export default function Header() {
   const hrefActivo = navLinks.find((link) => esActivo(link.href))?.href ?? null;
   const hrefObjetivo = hoverHref ?? hrefActivo;
 
+  // Safari recalcula el backdrop-blur en cada frame de una animación (a
+  // diferencia de Chrome/Firefox, que lo componen una sola vez), así que el
+  // menú móvil animado se ve lento/entrecortado ahí. Se detecta una sola vez
+  // para usar un fondo sólido sin blur solo en Safari; en el resto de
+  // navegadores el glassmorphism se mantiene igual. El menú móvil solo se
+  // monta cuando el usuario abre la hamburguesa (después de la hidratación),
+  // así que esto no genera desajustes de hidratación con el servidor.
+  const [esSafari] = useState(
+    () =>
+      typeof navigator !== "undefined" &&
+      /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent)
+  );
+
   useEffect(() => {
     function medir() {
       const nav = navRef.current;
@@ -178,7 +191,13 @@ export default function Header() {
 
         {/* Menú Móvil Desplegable Estilo Cápsula */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-fundacion-blue/95 backdrop-blur-xl backdrop-saturate-150 border border-white/15 rounded-3xl mt-2 p-6 shadow-glass flex flex-col items-center space-y-3 animate-fade-in-up">
+          <div
+            className={`md:hidden ${
+              esSafari
+                ? "bg-fundacion-blue"
+                : "bg-fundacion-blue/95 backdrop-blur-xl backdrop-saturate-150"
+            } border border-white/15 rounded-3xl mt-2 p-6 shadow-glass flex flex-col items-center space-y-3 animate-fade-in-up`}
+          >
             {navLinks.map((link) => {
               const activo = esActivo(link.href);
               return (

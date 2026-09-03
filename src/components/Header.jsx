@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { GlobalContext } from "@/context/GlobalContext";
+import TextoAnimado from "@/components/TextoAnimado";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -24,11 +25,43 @@ export default function Header() {
     return pathname.startsWith(href);
   };
 
+  // Píldora deslizante del nav: sigue el enlace en hover y, si no hay hover,
+  // se posiciona sobre el enlace de la página activa (efecto "magic move").
+  const navRef = useRef(null);
+  const linkRefs = useRef({});
+  const [hoverHref, setHoverHref] = useState(null);
+  const [indicador, setIndicador] = useState({ left: 0, width: 0, opacity: 0 });
+
+  const hrefActivo = navLinks.find((link) => esActivo(link.href))?.href ?? null;
+  const hrefObjetivo = hoverHref ?? hrefActivo;
+
+  useEffect(() => {
+    function medir() {
+      const nav = navRef.current;
+      const el = hrefObjetivo ? linkRefs.current[hrefObjetivo] : null;
+      if (!nav || !el) {
+        setIndicador((prev) => ({ ...prev, opacity: 0 }));
+        return;
+      }
+      const navRect = nav.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      setIndicador({
+        left: elRect.left - navRect.left,
+        width: elRect.width,
+        opacity: 1,
+      });
+    }
+
+    medir();
+    window.addEventListener("resize", medir);
+    return () => window.removeEventListener("resize", medir);
+  }, [hrefObjetivo]);
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 py-3 px-4 sm:px-6 transition-all duration-300">
       <div className="container mx-auto max-w-7xl">
         {/* Cápsula Flotante Glassmorphic */}
-        <div className="bg-fundacion-blue/90 backdrop-blur-xl border border-white/15 rounded-full px-4 sm:px-6 py-2.5 shadow-2xl shadow-fundacion-blue/30 flex items-center justify-between">
+        <div className="bg-fundacion-blue/90 backdrop-blur-xl backdrop-saturate-150 border border-white/15 rounded-full px-4 sm:px-6 py-2.5 shadow-glass flex items-center justify-between">
           
           {/* Logo Badge Redondeado */}
           <div className="flex items-center">
@@ -54,23 +87,40 @@ export default function Header() {
           </div>
 
           {/* Navegación Principal Desktop (Píldoras) */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5 font-medium bg-white/5 p-1.5 rounded-full border border-white/10">
+          <nav
+            ref={navRef}
+            onMouseLeave={() => setHoverHref(null)}
+            className="hidden md:flex relative items-center space-x-1 lg:space-x-1.5 font-medium bg-white/5 backdrop-blur-sm backdrop-saturate-150 p-1.5 rounded-full border border-white/10 shadow-glass-sm"
+          >
+            {/* Píldora que se desliza entre enlaces al pasar el mouse o cambiar de página */}
+            <span
+              aria-hidden="true"
+              className="absolute top-1.5 bottom-1.5 rounded-full bg-white/20 border border-white/25 shadow-inner transition-[left,width,opacity] duration-300 ease-out pointer-events-none"
+              style={{ left: indicador.left, width: indicador.width, opacity: indicador.opacity }}
+            />
             {navLinks.map((link) => {
               const activo = esActivo(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-label={link.label}
+                  ref={(el) => {
+                    linkRefs.current[link.href] = el;
+                  }}
+                  onMouseEnter={() => setHoverHref(link.href)}
+                  onFocus={() => setHoverHref(link.href)}
+                  onBlur={() => setHoverHref(null)}
                   className={
                     activo
-                      ? "bg-white/20 text-white font-bold px-4 py-1.5 rounded-full text-sm shadow-inner flex items-center gap-2 border border-white/25 transition-all duration-300"
-                      : "text-white/80 hover:text-white hover:bg-white/10 px-4 py-1.5 rounded-full transition-all duration-300 text-sm font-medium"
+                      ? "hover-letras relative z-10 text-white font-bold px-4 py-1.5 rounded-full text-sm flex items-center gap-2 transition-colors duration-300"
+                      : "hover-letras relative z-10 text-white/80 hover:text-white px-4 py-1.5 rounded-full transition-colors duration-300 text-sm font-medium"
                   }
                 >
                   {activo && (
                     <span className="w-2 h-2 rounded-full bg-fundacion-pink animate-pulse" aria-hidden="true" />
                   )}
-                  {link.label}
+                  <TextoAnimado texto={link.label} />
                 </Link>
               );
             })}
@@ -89,7 +139,7 @@ export default function Header() {
                   }
                 }
               }}
-              className="text-white/80 hover:text-white hover:bg-white/10 px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 border border-white/10 focus-visible:outline-2 focus-visible:outline-white"
+              className="text-white/80 hover:text-white bg-white/5 hover:bg-white/15 backdrop-blur-sm px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 border border-white/10 hover:border-white/20 focus-visible:outline-2 focus-visible:outline-white"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -99,7 +149,7 @@ export default function Header() {
 
             <Link
               href="/donar"
-              className="relative group overflow-hidden bg-gradient-to-r from-fundacion-pink via-rose-500 to-fundacion-orange text-white font-bold py-2 px-5 rounded-full text-sm shadow-lg shadow-fundacion-pink/40 hover:shadow-fundacion-pink/60 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="glass-shimmer relative group overflow-hidden bg-gradient-to-r from-fundacion-pink via-rose-500 to-fundacion-orange text-white font-bold py-2 px-5 rounded-full text-sm shadow-lg shadow-fundacion-pink/40 hover:shadow-fundacion-pink/60 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <svg className="w-4 h-4 text-white group-hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -128,7 +178,7 @@ export default function Header() {
 
         {/* Menú Móvil Desplegable Estilo Cápsula */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-fundacion-blue/95 backdrop-blur-xl border border-white/15 rounded-3xl mt-2 p-6 shadow-2xl flex flex-col items-center space-y-3 animate-fade-in-up">
+          <div className="md:hidden bg-fundacion-blue/95 backdrop-blur-xl backdrop-saturate-150 border border-white/15 rounded-3xl mt-2 p-6 shadow-glass flex flex-col items-center space-y-3 animate-fade-in-up">
             {navLinks.map((link) => {
               const activo = esActivo(link.href);
               return (
@@ -163,7 +213,7 @@ export default function Header() {
                     }
                   }
                 }}
-                className="text-white/80 hover:text-white py-2 rounded-full text-sm font-semibold flex items-center justify-center gap-2 border border-white/10"
+                className="text-white/80 hover:text-white bg-white/5 hover:bg-white/15 backdrop-blur-sm py-2 rounded-full text-sm font-semibold flex items-center justify-center gap-2 border border-white/10 hover:border-white/20 transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />

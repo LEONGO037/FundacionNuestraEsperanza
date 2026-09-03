@@ -21,8 +21,14 @@ export default function Programas() {
       <section className="container mx-auto px-6 py-12">
         {programas.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {programas.map((programa) => (
-              <TarjetaPrograma key={programa.slug} programa={programa} />
+            {programas.map((programa, index) => (
+              <div
+                key={programa.slug}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${Math.min(index, 6) * 0.1}s` }}
+              >
+                <TarjetaPrograma programa={programa} />
+              </div>
             ))}
           </div>
         ) : (

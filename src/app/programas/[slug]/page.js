@@ -46,13 +46,13 @@ export default async function ProgramaDetalle({ params }) {
       <article className="container mx-auto max-w-3xl px-6 pt-24 md:pt-28 pb-12">
         <Link
           href="/programas"
-          className="font-semibold text-fundacion-blue hover:underline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink"
+          className="font-semibold text-fundacion-blue transition-colors hover:underline hover:text-fundacion-pink focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink"
         >
           ← Volver a Programas
         </Link>
 
         {programa.thumbnail && (
-          <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-xl">
+          <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-xl shadow-lg animate-fade-in-up">
             <Image
               src={programa.thumbnail}
               alt={`Imagen del programa ${programa.title}`}
@@ -64,7 +64,7 @@ export default async function ProgramaDetalle({ params }) {
           </div>
         )}
 
-        <h1 className="mt-6 text-3xl font-bold text-fundacion-blue md:text-4xl">
+        <h1 className="mt-6 text-3xl font-bold text-fundacion-blue md:text-4xl animate-fade-in-up delay-100">
           {programa.title}
         </h1>
         {fechaLegible && (

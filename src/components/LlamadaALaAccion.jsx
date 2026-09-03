@@ -10,15 +10,15 @@ export default function LlamadaALaAccion({
   return (
     <section className="bg-fundacion-pale-pink">
       <div className="container mx-auto px-6 py-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-fundacion-blue">
+        <h2 className="text-2xl md:text-3xl font-bold text-fundacion-blue animate-fade-in-up">
           {titulo}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-gray-700">{mensaje}</p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <p className="mx-auto mt-4 max-w-2xl text-gray-700 animate-fade-in-up delay-100">{mensaje}</p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-in-up delay-200">
           {mostrarDonar && (
             <Link
               href="/donar"
-              className="rounded-full bg-fundacion-pink px-8 py-3 text-lg font-bold text-white transition-colors duration-300 hover:bg-fundacion-blue focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-blue"
+              className="glass-shimmer rounded-full bg-fundacion-pink px-8 py-3 text-lg font-bold text-white shadow-lg shadow-fundacion-pink/30 transition-all duration-300 hover:bg-fundacion-blue hover:-translate-y-0.5 hover:shadow-xl hover:shadow-fundacion-blue/30 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-blue"
             >
               Donar ahora
             </Link>
@@ -26,7 +26,7 @@ export default function LlamadaALaAccion({
           {mostrarVoluntariado && (
             <Link
               href="/voluntariado"
-              className="rounded-full border-2 border-fundacion-blue px-8 py-3 text-lg font-bold text-fundacion-blue transition-colors duration-300 hover:bg-fundacion-blue hover:text-white focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink"
+              className="rounded-full border-2 border-fundacion-blue bg-white/40 backdrop-blur-sm px-8 py-3 text-lg font-bold text-fundacion-blue shadow-sm transition-all duration-300 hover:bg-fundacion-blue hover:text-white hover:-translate-y-0.5 hover:shadow-xl hover:shadow-fundacion-blue/20 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fundacion-pink"
             >
               Ser voluntario
             </Link>

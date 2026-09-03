@@ -38,6 +38,9 @@ yarn-error.log*
 .vercel
 requerimientos/
 
+# reportes de Lighthouse (volcados locales con trazas de red completas)
+docs/lighthouse/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

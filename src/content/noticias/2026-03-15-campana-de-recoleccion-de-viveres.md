@@ -1,7 +1,7 @@
 ---
-title: "Campaña de recolección de víveres para las familias del albergue"
+title: Campaña de recolección de víveres para las familias del albergue SIUUU
 date: 2026-03-15T10:00:00.000Z
-author: "Fundación Nuestra Esperanza"
+author: Fundación Nuestra Esperanza
 ---
 
 La Fundación Nuestra Esperanza lanza una nueva campaña de recolección de víveres destinada a las familias que se hospedan en el albergue Casa Esperanza mientras sus hijos e hijas reciben tratamiento oncológico en La Paz.
